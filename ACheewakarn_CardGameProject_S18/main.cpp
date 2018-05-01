@@ -19,7 +19,7 @@
 
 using namespace std;
 
-enum type_of_hand {noPair, onePair, twoPairs, threeOfAKind, straight, flushh, fullHouse, fourOfAKind, straightFlush, royalFlush};
+enum type_of_hand {noPair=0, onePair, twoPairs, threeOfAKind, straight, flushh, fullHouse, fourOfAKind, straightFlush, royalFlush};
 enum card_suits { Clubs=0, Diamonds, Hearts, Spades};
 enum card_ranks { Ace=0, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King};
 
@@ -589,6 +589,10 @@ public:
                 cout << "Enter Index of a Card to be Replaced for " << p.name << " or 'd' if Done: " ;
                 cin >> replaceCommand;
                 
+                if (replaceCommand == "d"){
+                    break;
+                }
+                
                 int cardNdx;
                 try{
                     cardNdx = stoi(replaceCommand);
@@ -606,7 +610,6 @@ public:
                 } else {
                     p.hand.deck[cardNdx-1] = playingDeck.deck[0];
                     playingDeck.deck.erase(playingDeck.deck.begin());
-                    
                 }
             } while (replaceCommand != "d");
             
